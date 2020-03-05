@@ -7,17 +7,6 @@ public class Categoria {
     private String descr;
 
     /**
-     * Constructor para uso general.
-     *
-     * @param nom
-     * @param descr
-     */
-    public Categoria(String nom, String descr) {
-        this.nom = nom;
-        this.descr = descr;
-    }
-
-    /**
      * constuctor con id para usar en FragmentosDBHelper.
      *
      * @param id

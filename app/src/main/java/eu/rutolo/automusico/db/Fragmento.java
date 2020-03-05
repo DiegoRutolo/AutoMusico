@@ -12,17 +12,15 @@ public class Fragmento {
     private int tempo;
     private TipoEstructural te;
     private TipoFuncional tf;
+
     private ArrayList<Categoria> categorias;
+    private int duracion;
 
     // region Contructores
-    public Fragmento(String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf, ArrayList<Categoria> categorias) {
-        this.nombre = nombre;
-        this.file = file;
-        this.hash = hash;
-        this.tempo = tempo;
-        this.te = te;
-        this.tf = tf;
-        this.categorias = categorias;
+    public Fragmento(int id, String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf) {
+        this(nombre, file, hash, tempo, te, tf);
+        this.id = id;
+
     }
 
     public Fragmento(String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf) {
@@ -32,29 +30,10 @@ public class Fragmento {
         this.tempo = tempo;
         this.te = te;
         this.tf = tf;
-        categorias = new ArrayList<>();
-    }
 
-    public Fragmento(int id, String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf, ArrayList<Categoria> categorias) {
-        this.id = id;
-        this.nombre = nombre;
-        this.file = file;
-        this.hash = hash;
-        this.tempo = tempo;
-        this.te = te;
-        this.tf = tf;
-        this.categorias = categorias;
-    }
-
-    public Fragmento(int id, String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf) {
-        this.id = id;
-        this.nombre = nombre;
-        this.file = file;
-        this.hash = hash;
-        this.tempo = tempo;
-        this.te = te;
-        this.tf = tf;
         categorias = new ArrayList<>();
+
+
     }
     // endregion
 

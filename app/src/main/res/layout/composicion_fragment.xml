@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.ComposicionFragment">
+
+    <ImageView
+        android:id="@+id/ivFondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ocaso" />
+
+    <TextView
+        android:id="@+id/txeTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tituloEjemplo"
+        android:textAlignment="center"
+        style="@style/tituloComposicion"
+        android:layout_gravity="top|center_horizontal"/>
+
+    <ImageButton
+        android:id="@+id/btnAddComposicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_redondo_grande"
+        android:src="@drawable/ic_action_playback_play"
+        android:layout_gravity="bottom|right"/>
+
+</FrameLayout>
