@@ -81,6 +81,18 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
                 "   on update cascade on delete cascade" +
                 ");";
         db.execSQL(sql);
+
+        sql = "INSERT INTO Categoria ('nom')" +
+                "VALUES ('Tenebrosa');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO Categoria ('nom')" +
+                "VALUES ('Alegre');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO Categoria ('nom')" +
+                "VALUES ('Neutral');";
+        db.execSQL(sql);
     }
 
     @Override
