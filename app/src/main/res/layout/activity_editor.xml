@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/boton_redondo_mediano"
             android:src="@drawable/ic_action_playback_schuffle"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:onClick="btnRandom_click"/>
 
         <ImageButton
             android:id="@+id/btnPlay"

@@ -39,9 +39,15 @@ public class CategoriaAdapter extends BaseAdapter {
     }
 
     public int getValue(int position) {
-        View v = (View) getItem(position);
+        View v = getView(position, null, null);
         SeekBar sb = v.findViewById(R.id.sbICvalue);
         return sb.getProgress();
+    }
+
+    public void setValue(int position, int value) {
+        View v = getView(position, null, null);
+        SeekBar sb = v.findViewById(R.id.sbICvalue);
+        sb.setProgress(value);
     }
 
     @Override
