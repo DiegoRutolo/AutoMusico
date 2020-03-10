@@ -1,5 +1,6 @@
 package eu.rutolo.automusico;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     // region Botones
     public void btnAddComposicion_click(View v) {
-        pruebaSonidos();
+        Intent i = new Intent(this, EditorActivity.class);
+        startActivity(i);
     }
     // endregion
 }
