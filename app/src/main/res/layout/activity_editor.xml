@@ -12,6 +12,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
+        <LinearLayout
+            android:id="@+id/contCategs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/lbl1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoria" />
+
+            <SeekBar
+                android:id="@+id/sb1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:min="1"
+                android:max="100" />
+
+        </LinearLayout>
     </ScrollView>
 
     <LinearLayout

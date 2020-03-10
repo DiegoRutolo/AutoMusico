@@ -5,4 +5,5 @@
     <dimen name="boton_redonde_grande">70dp</dimen>
     <dimen name="boton_redonde_mediano">55dp</dimen>
     <dimen name="boton_redonde_pequenho">40dp</dimen>
+    <dimen name="margen_separacion">30dp</dimen>
 </resources>

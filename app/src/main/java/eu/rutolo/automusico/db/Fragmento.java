@@ -3,6 +3,11 @@ package eu.rutolo.automusico.db;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Cada objeto fragmento representa una pista de música.
+ * El helper de la DB utiliza el constructor, pero para poder usarlo es necesario invocar el método
+ * <code>configurar</code> desde el <code>MusicoManager</code>.
+ */
 public class Fragmento {
 
     private int id;
@@ -15,30 +20,30 @@ public class Fragmento {
 
     private ArrayList<Categoria> categorias;
     private int duracion;
+    private String fileName;
 
-    // region Contructores
-    public Fragmento(int id, String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf) {
-        this(nombre, file, hash, tempo, te, tf);
+    private boolean configurado;
+
+    Fragmento(int id, String nombre, String fileName, String hash, int tempo, TipoEstructural te, TipoFuncional tf) {
         this.id = id;
-
-    }
-
-    public Fragmento(String nombre, File file, String hash, int tempo, TipoEstructural te, TipoFuncional tf) {
         this.nombre = nombre;
-        this.file = file;
+        this.fileName = fileName;
         this.hash = hash;
         this.tempo = tempo;
         this.te = te;
         this.tf = tf;
 
-        categorias = new ArrayList<>();
-
-
+        configurado = false;
     }
-    // endregion
 
     public void addCategoria(Categoria cat) {
         categorias.add(cat);
+    }
+
+    public void configurar(File parent, int duracion) {
+        this.file = new File(parent, fileName);
+        this.duracion = duracion;
+        this.configurado = true;
     }
 
     // region Getters
@@ -68,6 +73,10 @@ public class Fragmento {
 
     public TipoFuncional getTf() {
         return tf;
+    }
+
+    public boolean isConfigurado() {
+        return configurado;
     }
 
     public Categoria[] getCategorias() {
