@@ -37,7 +37,8 @@
             android:background="@drawable/boton_redondo_grande"
             android:src="@drawable/ic_action_playback_play"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/margen_general"/>
+            android:layout_margin="@dimen/margen_general"
+            android:onClick="btnPlay_click" />
 
         <ImageButton
             android:id="@+id/btnSave"

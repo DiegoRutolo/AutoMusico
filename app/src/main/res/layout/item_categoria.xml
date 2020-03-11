@@ -8,12 +8,14 @@
         android:id="@+id/tvICtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"/>
+        android:text="@string/ejemplo_de_texto"/>
 
     <SeekBar
         android:id="@+id/sbICvalue"
+        android:tag="barra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100" />
+        android:max="100"
+        android:progress="50"/>
 
 </LinearLayout>

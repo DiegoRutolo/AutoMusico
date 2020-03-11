@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -31,7 +33,7 @@ public class EditorActivity extends AppCompatActivity {
 
         rnd = new Random();
         dbh = FragmentosDBHelper.getInstance(getApplicationContext());
-        ArrayList<Categoria> categs = new ArrayList<Categoria>();
+        ArrayList<Categoria> categs = new ArrayList<>();
         for (Categoria c : dbh.listCategoria()) {
             categs.add(c);
         }
@@ -45,8 +47,12 @@ public class EditorActivity extends AppCompatActivity {
     // region Botones
     public void btnRandom_click(View v) {
         for (int i = 0; i < adapter.getCount(); i++) {
-            adapter.setValue(i, rnd.nextInt(101));
+            adapter.setValue((ViewGroup) findViewById(R.id.lvCategorias), i, rnd.nextInt(101));
         }
+    }
+
+    public void btnPlay_click(View v) {
+        Toast.makeText(getApplicationContext(), "Primer valor: " + adapter.getValue(0), Toast.LENGTH_SHORT).show();
     }
     // endregion
 }
