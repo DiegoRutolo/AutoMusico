@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Utils {
 
+    public static final String DTAG = "DEBUUUUG ~";
+
     // https://stackoverflow.com/a/10887697
     public static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
         ArrayList<View> views = new ArrayList<View>();

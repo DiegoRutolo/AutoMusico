@@ -6,7 +6,18 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="acept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
 
     <string name="tituloEjemplo">ExampleTitle</string>
     <string name="ejemplo_de_texto">Lorem ipsum</string>
+
+    <string name="dialog_nombreComposicion_titulo">Nombre</string>
+    <string name="dialog_nombreComposicion_hint">Nombre de la composicion</string>
+    <string name="dialog_sobrescribir_title">¿Sobrescribir?</string>
+    <string name="dialog_sobrescribir_msg">Ya existe una composición con ese nombre. ¿Seguro que la quieres sobrescribir?</string>
+
+    <string name="toast_cancel">Cancelado</string>
 </resources>

@@ -14,12 +14,14 @@ import java.util.HashMap;
 import eu.rutolo.automusico.R;
 import eu.rutolo.automusico.Utils;
 import eu.rutolo.automusico.db.Categoria;
+import eu.rutolo.automusico.manager.Composicion;
 
 public class CategoriaAdapter extends BaseAdapter {
 
     private ArrayList<Categoria> categorias;
     private HashMap<Categoria, Integer> valores;
     private Context ctx;
+    private Composicion composicion;
 
     public CategoriaAdapter(Context ctx, ArrayList<Categoria> categorias) {
         this.ctx = ctx;
@@ -28,6 +30,8 @@ public class CategoriaAdapter extends BaseAdapter {
         for (Categoria c : categorias) {
             valores.put(c, 50);
         }
+
+        composicion = new Composicion(valores);
     }
 
     @Override
@@ -58,6 +62,16 @@ public class CategoriaAdapter extends BaseAdapter {
         sb.setProgress(value);
     }
 
+    private void actualizarComposicion(int pos, int val) {
+        if (composicion == null) {
+            composicion = new Composicion(valores);
+        }
+    }
+
+    public Composicion getComposicion() {
+        return composicion;
+    }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -75,6 +89,7 @@ public class CategoriaAdapter extends BaseAdapter {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 valores.put(categorias.get(position), progress);
+                // actualizarComposicion(position, progress);
             }
 
             @Override

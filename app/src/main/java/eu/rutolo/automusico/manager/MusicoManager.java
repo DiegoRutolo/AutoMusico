@@ -38,4 +38,8 @@ public class MusicoManager {
         mp.release();
         return  duracion;
     }
+
+    public void play(Composicion comp) {
+
+    }
 }
