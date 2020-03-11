@@ -13,6 +13,10 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
     // region Singleton
     private static FragmentosDBHelper fragmentosDBHelper;
 
+    public static FragmentosDBHelper getInstance() {
+        return fragmentosDBHelper;
+    }
+
     public static FragmentosDBHelper getInstance(Context ctx) {
         if (fragmentosDBHelper == null) {
             fragmentosDBHelper = new FragmentosDBHelper(ctx);
@@ -106,6 +110,22 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
         vals.put("nom", nom);
         vals.put("descr", descr);
         return getWritableDatabase().insert("Categoria", null, vals);
+    }
+
+    public Categoria getCategoriaById(int id) {
+        Categoria cat = null;
+        Cursor cur = getReadableDatabase().query("Categoria", null,
+                "idCateg = ?", new String[] {Integer.toString(id)},
+                null, null, null, null);
+
+        if (cur.moveToFirst()) {
+            cat = new Categoria(
+                    cur.getInt(cur.getColumnIndex("idCateg")),
+                    cur.getString(cur.getColumnIndex("nom")),
+                    cur.getString(cur.getColumnIndex("descr"))
+            );
+        }
+        return cat;
     }
 
     public Categoria[] listCategoria() {

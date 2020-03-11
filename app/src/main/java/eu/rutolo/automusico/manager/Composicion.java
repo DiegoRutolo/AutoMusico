@@ -2,12 +2,19 @@ package eu.rutolo.automusico.manager;
 
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.util.Xml;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +30,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import eu.rutolo.automusico.Utils;
 import eu.rutolo.automusico.db.Categoria;
+import eu.rutolo.automusico.db.FragmentosDBHelper;
 
 public class Composicion {
 
@@ -60,6 +68,42 @@ public class Composicion {
 
     public static Composicion parseComposicion(File xmlFile) {
         Composicion comp = new Composicion();
+
+        try {
+            InputStream is = new FileInputStream(xmlFile);
+            FragmentosDBHelper dbh = FragmentosDBHelper.getInstance();
+
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setInput(is, "UTF-8");
+
+            int evt = 9999;
+
+            do {
+
+                evt = parser.next();
+
+                if (evt == XmlPullParser.START_TAG) {
+                    if (parser.getName().equals("nombre")) {
+                        comp.setNombre(parser.nextText());
+                    } else if (parser.getName().equals("categoria")) {
+                        evt = parser.nextTag();  //id
+                        Categoria cat = dbh.getCategoriaById(Integer.parseInt(parser.nextText()));
+                        evt = parser.nextTag(); //cantidad
+                        int cantidad = Integer.parseInt(parser.nextText());
+
+                        comp.addVal(cat, cantidad);
+                    }
+                }
+
+            } while (evt != XmlPullParser.END_DOCUMENT);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return comp;
     }
