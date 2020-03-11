@@ -1,5 +1,6 @@
 package eu.rutolo.automusico.manager;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.w3c.dom.Attr;
@@ -26,6 +27,7 @@ import eu.rutolo.automusico.db.Categoria;
 public class Composicion {
 
     private String nombre;
+    private Bitmap img;
     private HashMap<Categoria, Integer> vals;
 
     public Composicion() {
@@ -46,6 +48,20 @@ public class Composicion {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public Bitmap getImg() {
+        return img;
+    }
+
+    public void setImg(Bitmap img) {
+        this.img = img;
+    }
+
+    public static Composicion parseComposicion(File xmlFile) {
+        Composicion comp = new Composicion();
+
+        return comp;
     }
 
     public void saveToXml(File file) {
@@ -97,5 +113,9 @@ public class Composicion {
         } catch (TransformerException e) {
             e.printStackTrace();
         }
+    }
+
+    public void play() {
+
     }
 }

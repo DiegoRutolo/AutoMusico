@@ -93,7 +93,8 @@ public class EditorActivity extends AppCompatActivity {
     private void saveFile(String fileName) {
         adapter.getComposicion().setNombre(fileName);
 
-        final File FILE = new File(getFilesDir(), fileName.replace(" ", "_") + ".xml");
+        final File FILE = new File(new File(getFilesDir(), Utils.SUBDIR_COMPOSICIONES), fileName.replace(" ", "_") + ".xml");
+        FILE.getParentFile().mkdirs();
         // comprobar si existe
         if (FILE.exists()) {
             AlertDialog.Builder adb = new AlertDialog.Builder(this);

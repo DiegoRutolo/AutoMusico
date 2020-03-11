@@ -7,7 +7,7 @@
     android:layout_margin="@dimen/margen_general">
 
     <GridView
-        android:id="@+id/gvMiniaturas"
+        android:id="@+id/gvComposiciones"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

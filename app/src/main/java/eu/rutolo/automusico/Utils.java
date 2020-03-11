@@ -9,6 +9,8 @@ public class Utils {
 
     public static final String DTAG = "DEBUUUUG ~";
 
+    public static final String SUBDIR_COMPOSICIONES = "compsiciones";
+
     // https://stackoverflow.com/a/10887697
     public static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
         ArrayList<View> views = new ArrayList<View>();

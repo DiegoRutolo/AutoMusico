@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbh = FragmentosDBHelper.getInstance(getApplicationContext());
+
+        // buscar composiciones
+
     }
 
     // region Botones
