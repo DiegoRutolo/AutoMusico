@@ -158,8 +158,4 @@ public class Composicion {
             e.printStackTrace();
         }
     }
-
-    public void play() {
-
-    }
 }

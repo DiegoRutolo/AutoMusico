@@ -34,6 +34,7 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // region Crear tablas
         String sql = "CREATE TABLE Categoria (" +
                 "idCateg    integer primary key autoincrement," +
                 "nom        text unique," +
@@ -85,7 +86,10 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
                 "   on update cascade on delete cascade" +
                 ");";
         db.execSQL(sql);
+        // endregion
 
+        // region Insertar datos
+        // Categorias
         sql = "INSERT INTO Categoria ('nom')" +
                 "VALUES ('Tenebrosa');";
         db.execSQL(sql);
@@ -97,6 +101,46 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
         sql = "INSERT INTO Categoria ('nom')" +
                 "VALUES ('Neutral');";
         db.execSQL(sql);
+
+        // Tipos funcionales
+        sql = "INSERT INTO TipoFuncional ('nom', 'minSimult', 'maxSimult')" +
+                "VALUES ('Perucsion', '1', '1');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO TipoFuncional ('nom', 'minSimult', 'maxSimult')" +
+                "VALUES ('Melodia', '0', '1');";
+        db.execSQL(sql);
+
+        // Fragmentos
+        sql = "INSERT INTO Fragmento ('nombre', 'ruta', 'tFunc')" +
+                "VALUES ('piedras', 'base1_piedras.ogg', '1');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO Fragmento ('nombre', 'ruta', 'tFunc')" +
+                "VALUES ('piano1', 'piano1_edev.ogg', '2');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO Fragmento ('nombre', 'ruta', 'tFunc')" +
+                "VALUES ('trompeta1', 'trompeta1_caida.ogg', '2');";
+        db.execSQL(sql);
+
+        // CancCateg
+        sql = "INSERT INTO CancCateg ('idFrag', 'idCateg', 'intensidad')" +
+                "VALUES ('1', '3', '100');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO CancCateg ('idFrag', 'idCateg', 'intensidad')" +
+                "VALUES ('2', '3', '100');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO CancCateg ('idFrag', 'idCateg', 'intensidad')" +
+                "VALUES ('2', '2', '50');";
+        db.execSQL(sql);
+
+        sql = "INSERT INTO CancCateg ('idFrag', 'idCateg', 'intensidad')" +
+                "VALUES ('3', '1', '100');";
+        db.execSQL(sql);
+        // endregion
     }
 
     @Override
