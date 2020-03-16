@@ -50,6 +50,10 @@ public class Composicion {
         vals.put(c, val);
     }
 
+    public HashMap<Categoria, Integer> getVals() {
+        return vals;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

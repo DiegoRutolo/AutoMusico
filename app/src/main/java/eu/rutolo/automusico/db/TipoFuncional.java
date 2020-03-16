@@ -1,6 +1,6 @@
 package eu.rutolo.automusico.db;
 
-class TipoFuncional extends Tipo {
+public class TipoFuncional extends Tipo {
 
     private int maxSimult;
     private int minSimult;

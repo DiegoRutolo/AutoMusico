@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.io.File;
-
 public class FragmentosDBHelper extends SQLiteOpenHelper {
 
     // region Singleton
@@ -169,6 +167,7 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
                     cur.getString(cur.getColumnIndex("descr"))
             );
         }
+        cur.close();
         return cat;
     }
 
@@ -338,22 +337,43 @@ public class FragmentosDBHelper extends SQLiteOpenHelper {
 
     public Fragmento[] listFragmento() {
         Cursor cur = getReadableDatabase().rawQuery("SELECT * FROM Fragmento", null);
-        Fragmento[] tes = new Fragmento[cur.getCount()];
+        Fragmento[] frags = new Fragmento[cur.getCount()];
         if (cur.moveToFirst()) {
             for (int i = 0; i < cur.getCount(); i++) {
-                tes[i] = new Fragmento(
+                frags[i] = new Fragmento(
                         cur.getInt(cur.getColumnIndex("idFrag")),
-                        cur.getString(cur.getColumnIndex("nom")),
+                        cur.getString(cur.getColumnIndex("nombre")),
                         cur.getString(cur.getColumnIndex("ruta")),
                         cur.getString(cur.getColumnIndex("hash")),
                         cur.getInt(cur.getColumnIndex("tempo")),
                         getTipoEstructural(cur.getInt(cur.getColumnIndex("tEstr"))),
                         getTipoFuncional(cur.getInt(cur.getColumnIndex("tFunc")))
                 );
+                cur.moveToNext();
             }
         }
         cur.close();
-        return tes;
+
+        for (Fragmento frag : frags) {
+            cur = getReadableDatabase().query("CancCateg", null,
+                    "idFrag = ?", new String[] {Integer.toString(frag.getId())},
+                    null, null, null, null
+            );
+
+            if (cur.moveToFirst()) {
+                for (int i = 0; i < cur.getCount(); i++) {
+                    Categoria cat = getCategoriaById(
+                            cur.getInt(cur.getColumnIndex("idCateg"))
+                    );
+                    int intensidad = cur.getInt(cur.getColumnIndex("intensidad"));
+                    frag.addCategoria(cat, intensidad);
+
+                    cur.moveToNext();
+                }
+            }
+        }
+
+        return frags;
     }
 
     public long categorizarFragmento(Fragmento frag, Categoria categ, int intensidad) {

@@ -2,6 +2,7 @@ package eu.rutolo.automusico.db;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Cada objeto fragmento representa una pista de música.
@@ -18,7 +19,7 @@ public class Fragmento {
     private TipoEstructural te;
     private TipoFuncional tf;
 
-    private ArrayList<Categoria> categorias;
+    private HashMap<Categoria, Integer> categorias;
     private int duracion;
     private String fileName;
 
@@ -34,10 +35,11 @@ public class Fragmento {
         this.tf = tf;
 
         configurado = false;
+        categorias = new HashMap<>();
     }
 
-    public void addCategoria(Categoria cat) {
-        categorias.add(cat);
+    public void addCategoria(Categoria cat, int intensidad) {
+        categorias.put(cat, intensidad);
     }
 
     public void configurar(File parent, int duracion) {
@@ -53,6 +55,10 @@ public class Fragmento {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     public File getFile() {
@@ -79,9 +85,8 @@ public class Fragmento {
         return configurado;
     }
 
-    public Categoria[] getCategorias() {
-        Categoria[] cats = new Categoria[categorias.size()];
-        return categorias.toArray(cats);
+    public HashMap<Categoria, Integer> getCategorias() {
+        return categorias;
     }
     // endregion
 }
