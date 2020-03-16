@@ -14,4 +14,8 @@ public class TipoFuncional extends Tipo {
     public int getMaxSimult() {
         return maxSimult;
     }
+
+    public int getMinSimult() {
+        return minSimult;
+    }
 }

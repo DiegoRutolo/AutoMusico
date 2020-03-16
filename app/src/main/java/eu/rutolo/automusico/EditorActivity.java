@@ -56,7 +56,7 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     public void btnPlay_click(View v) {
-        Toast.makeText(getApplicationContext(), "Primer valor: " + adapter.getValue(0), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getApplicationContext(), "Primer valor: " + adapter.getValue(0), Toast.LENGTH_SHORT).show();
         musicoManager.play(adapter.getComposicion());
     }
 
